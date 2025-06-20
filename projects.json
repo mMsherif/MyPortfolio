@@ -1,0 +1,18 @@
+[
+    {
+        "title": "Logistics Delivery Database and Website",
+        "description": "Developed a full-stack system for logistics management with efficient data handling and APIs for real-time updates.",
+        "image": "logistics.jpg",
+        "githubUrl": "https://github.com/moSherifZC/logistics-system",
+        "technologies": ["C#", ".NET", "SQL", "JavaScript"],
+        "date": "Feb 2024 - May 2024"
+    },
+    {
+        "title": "Bricks Break Game Development",
+        "description": "Built a desktop game in C++ focusing on OOP principles and user interaction.",
+        "image": "bricks-game.jpg",
+        "githubUrl": "https://github.com/moSherifZC/bricks-break-game",
+        "technologies": ["C++", "OOP", "Game Development"],
+        "date": "Oct 2023 - Jan 2024"
+    }
+]
