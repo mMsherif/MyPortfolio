@@ -1,33 +1,22 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Check if mobile device
-    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    // Prevent horizontal scrolling on all devices
+    document.body.style.overflowX = 'hidden';
     
-    // Prevent horizontal scrolling only on mobile
-    if (isMobile) {
-        document.body.style.overflowX = 'hidden';
-        document.body.style.width = '100%';
-        document.body.style.position = 'relative';
-        
-        // Additional prevention for touch events
-        document.addEventListener('touchmove', function(e) {
-            if (e.touches.length === 1) {
-                const x = e.touches[0].pageX;
-                const y = e.touches[0].pageY;
-                const element = document.elementFromPoint(x, y);
-                
-                // Check if we should allow horizontal scrolling for specific elements
-                const allowHorizontalScroll = element && 
-                    (element.classList.contains('allow-horizontal-scroll') || 
-                    element.tagName === 'INPUT' || 
-                    element.tagName === 'TEXTAREA' ||
-                    element.tagName === 'SELECT');
-                
-                if (!allowHorizontalScroll) {
-                    e.preventDefault();
-                }
-            }
-        }, { passive: false });
-    }
+    // For mobile devices - prevent horizontal touch scrolling
+    let touchStartX = 0;
+    let touchEndX = 0;
+    
+    document.addEventListener('touchstart', function(e) {
+        touchStartX = e.changedTouches[0].screenX;
+    }, {passive: true});
+    
+    document.addEventListener('touchend', function(e) {
+        touchEndX = e.changedTouches[0].screenX;
+        // Prevent horizontal swipe navigation
+        if (Math.abs(touchEndX - touchStartX) > 30) {
+            e.preventDefault();
+        }
+    }, {passive: false});
     
     // Add scroll event to navbar
     window.addEventListener('scroll', function() {

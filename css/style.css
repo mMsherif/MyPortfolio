@@ -8,25 +8,35 @@
 }
 
 /* Base Styles */
+html, body {
+    width: 100%;
+    overflow-x: hidden;
+}
+
 body {
     font-family: 'Poppins', sans-serif;
     color: var(--text-color);
     line-height: 1.6;
     padding-top: 70px;
+    overflow-x: hidden;
 }
 
-/* Mobile-specific horizontal scroll prevention */
+/* For mobile devices specifically */
 @media (max-width: 768px) {
-    html, body {
-        width: 100%;
-        overflow-x: hidden;
+    body {
         position: relative;
+        width: 100vw;
+        overflow-x: hidden;
     }
     
-    .container {
+    .container, .container-fluid {
         max-width: 100%;
-        padding-left: 15px;
         padding-right: 15px;
+        padding-left: 15px;
+    }
+    
+    * {
+        max-width: 100%;
     }
 }
 
@@ -298,9 +308,4 @@ section {
     .scroll-indicator {
         bottom: 30px;
     }
-}
-
-/* Prevent any element from causing horizontal overflow */
-* {
-    max-width: 100%;
 }
